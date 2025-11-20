@@ -47,16 +47,16 @@ def launch_name_window():
     name_win.resizable(False, False)
 
     tk.Label(name_win, text = "Remember me", font = ("Segoe UI Black, 18"), fg = "#00BFFF", bg = "#121212").pack(pady = (20, 5))
-    tk.Label(name_win, text = "Enter Your Name to Beginq", font = ("Segoe UI Black, 12"), fg = "#DDDDDD", bg = "#121212").pack(pady = (5, 10))
+    tk.Label(name_win, text = "Enter Your Name to Begin", font = ("Segoe UI Black, 12"), fg = "#DDDDDD", bg = "#121212").pack(pady = (5, 10))
     
     name_entry = tk.Entry(name_win,font = ("Segoe UI", 14), justify = "center", fg = "#222", relief = "flat", bg = "FFFFFF", width = 22)
     name_entry.pack(pady = 5, ipadx = 10, ipady = 5)
     
-    def start_game():
-        global player_name
-        player_name = name_entry.get().strip() or "Player"
-        name_win.destroy()
-        launch_game_window()
+def start_game():
+    global player_name
+    player_name = name_entry.get().strip() or "Player"
+    name_win.destroy()
+    launch_game_window()
             
     start_btn = tk.Button(
         name_win, text = "Start Game", font = ("Segoe UI Semibold", 13),
@@ -67,11 +67,11 @@ def launch_name_window():
     
     start_btn.pack(pady = 15)
     
-    # Hover Effect
-    def on_enter(e): start_btn.config(bg="#1E90FF")
-    def on_leave(e): start_btn.config(bg="#00BFF")
-    start_btn.bind("Enter", on_enter)
-    start_btn.bind("Enter", on_leave)
+# Hover Effect
+def on_enter(e): start_btn.config(bg = "#1E90FF")
+def on_leave(e): start_btn.config(bg = "#00BFFF") 
+start_btn.bind("<Enter>", on_enter)
+start_btn.bind("<Leave>", on_leave)
     
 # -------------Main Game Window ---------
 def launch_game_window():
@@ -107,13 +107,14 @@ def launch_game_window():
     tiles_frame = tk.Frame(grid_container, bg = "#1E1E1E")
     tiles_frame.pack(pady =10)
     
-    rows, cols = get_grid_dimensions(TILE_COUNT)
+    rows, cols = get_grid_dimension(TILE_COUNT)
     tiles = []
+    
+    
     
 # ------Launch/show window---------------
 launch_name_window()
 MainWindow.mainloop()
-
 
 
 
